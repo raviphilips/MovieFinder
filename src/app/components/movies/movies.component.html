@@ -1,0 +1,72 @@
+
+<div class="jumbotron">
+	<div class="container">
+		<h3>Find A Movie</h3>
+		
+		<form (submit)="searchMovies()">
+			<input type="text" class="form-control" [(ngModel)]="searchStr" name="searchStr">
+			<br>
+			<button class="btn btn-warning btn-lg">Find</button>
+		</form>
+	</div>
+</div>
+<!-- Search Result panel -->
+<div *ngIf="searchRes" class="panel panel-default">
+
+	<div class="panel-heading">
+		<h3 class="panel-titile">Search</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div *ngFor="let movie of searchRes; let i=index" class="col-md-2">
+				<div *ngIf="i < 12" >
+				<img *ngIf="movie.poster_path" class="thumbnail" src ="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+				<h4>{{movie.title}}</h4>
+				<p>{{movie.release_date}}</p>
+				<p><a routerLink ="/movie/{{movie.id}}" class="btn btn-default">View Details</a></p>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+<!-- Popular Movies panel -->
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-titile">Popular Movies</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div *ngFor="let movie of popularList; let i=index" class="col-md-2">
+				<div *ngIf="i < 6" >
+				<img *ngIf="movie.poster_path" class="thumbnail" src ="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+				<h4>{{movie.title}}</h4>
+				<p>{{movie.release_date}}</p>
+				<p><a routerLink ="/movie/{{movie.id}}" class="btn btn-default">View Details</a></p>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- In Theaters panel -->
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-titile">In Theaters</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div *ngFor="let movie of theatersList; let i=index" class="col-md-2">
+				<div *ngIf="i < 6" >
+				<img *ngIf="movie.poster_path" class="thumbnail" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+				<h4>{{movie.title}}</h4>
+				<p>{{movie.release_date}}</p>
+				<p><a routerLink="/movie/{{movie.id}}" class="btn btn-default">View Details</a></p>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
